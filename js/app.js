@@ -15,20 +15,26 @@ const displaySearchResult = phones => {
     if (phones.length == 0) {
         document.getElementById('no-result').style.display = 'block';
     }
-
-    phones.forEach(phone => {
-        const div = document.createElement('div');
-        div.classList.add('col');
-        div.innerHTML = `
-        <div class="card">
+    else {
+        document.getElementById('no-result').style.display = 'none';
+        phones.forEach(phone => {
+            const div = document.createElement('div');
+            div.classList.add('col');
+            div.innerHTML = `
+        <div class="card  align-items-center py-3">
         <img src="${phone.image}" width="160px" height="212px" class="">
         <div class="card-body">
-            <h5 class="card-title text-center">${phone.phone_name}</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.</p>
+        <h5>Brand: ${phone.brand}</h5>
+            <h5 class="card-title">${phone.phone_name}</h5>
         </div>
+        <button onclick="displayPhoneDetails()" type="button" class="btn btn-dark">Learn More</button>
         </div>
         `
-        searchResult.appendChild(div);
-    })
+            searchResult.appendChild(div);
+        })
+    }
+}
+
+const displayPhoneDetails = () => {
+    console.log('clickedd')
 }
