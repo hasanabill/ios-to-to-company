@@ -27,7 +27,7 @@ const displaySearchResult = phones => {
         <h5>Brand: ${phone.brand}</h5>
             <h5 class="card-title">${phone.phone_name}</h5>
         </div>
-        <button onclick="displayPhoneDetails()" type="button" class="btn btn-dark">Learn More</button>
+        <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-dark" >Learn More</button>
         </div>
         `
             searchResult.appendChild(div);
@@ -35,6 +35,25 @@ const displaySearchResult = phones => {
     }
 }
 
-const displayPhoneDetails = () => {
-    console.log('clickedd')
+const loadPhoneDetails = phoneId => {
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPhoneDetails(data.data))
+}
+
+const displayPhoneDetails = phone => {
+    const phoneDetails = document.getElementById('phone-details')
+    phoneDetails.textContent = '';
+    const div = document.createElement('div')
+    div.classList.add('modal-dialog')
+    div.innerHTML = `
+        
+        <div class="">
+            <h5 class="">${phone.name}</h5>
+        </div>
+        
+        `
+    phoneDetails.appendChild(div)
+    console.log(phone)
 }
