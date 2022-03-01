@@ -63,12 +63,12 @@ const displayPhoneDetails = phone => {
         <b>Storage:</b> ${phone.mainFeatures.memory}<br>
         </p>
       <p class="card-text"><b>Sensors:</b> ${phone.mainFeatures.sensors}</p>
-      <p class="card-text"><b>Others:</b> ${Object.entries(phone.others)}</p>
-    <p class="card-text"><small class="text-muted">${phone.releaseDate}</small></p>
-    </div >
-  </div >
-
-    `
+      <p class="card-text"><b>Others:</b> ${phone.others ? Object.entries(phone.others) : 'no data found'}</p>
+      <p class="card-text"><small class="text-muted">${phone.releaseDate ? phone.releaseDate : 'no release date data found'}</small></p>
+      </div >
+      </div >
+      
+      `
     phoneDetails.appendChild(div)
     console.log(phone)
 }
