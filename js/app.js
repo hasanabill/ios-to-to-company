@@ -10,6 +10,8 @@ const searchPhone = () => {
 
 const displaySearchResult = phones => {
     const searchResult = document.getElementById('search-result');
+    const phoneDetails = document.getElementById('phone-details')
+    phoneDetails.textContent = '';
     searchResult.textContent = '';
 
     if (phones.length == 0) {
