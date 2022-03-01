@@ -50,7 +50,7 @@ const displayPhoneDetails = phone => {
     const phoneDetails = document.getElementById('phone-details')
     phoneDetails.textContent = '';
     const div = document.createElement('div')
-    div.classList.add('row', 'align-items-center', 'px-2')
+    div.classList.add('row', 'align-items-center', 'px-2', 'pt-3')
     div.innerHTML = `
     <div class="col-md-4 w-50 mx-auto">
     <img src="${phone.image}" class="img-fluid rounded-start" alt="...">
