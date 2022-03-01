@@ -1,0 +1,14 @@
+/* no result error */
+#no-result {
+    display: none;
+    color: red;
+}
+
+/* hovers */
+.phone{
+    transition: 1s all;
+}
+.phone:hover{
+    transform: scale(1.03);
+    box-shadow: 1px 1px 30px;
+}

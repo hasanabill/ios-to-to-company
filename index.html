@@ -6,40 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IOS To To Company</title>
+    <!-- bootstrap css  -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <style>
-        #no-result {
-            display: none;
-            color: red;
-        }
-    </style>
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="container">
-    <header>
-        <h1 class="text-center">IOS To To Company</h1>
+<body>
+    <!-- header part -->
+    <header class="bg-dark p-3">
+        <h1 class="text-center text-white">IOS <span class="text-danger">To To</span> Company</h1>
         <div class="input-group mb-3 w-50 mx-auto">
             <input id="search-field" type="text" class="form-control" placeholder="Which phone you want?"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button onclick="searchPhone()" class="btn btn-dark" type="button" id="button-search">Search</button>
+            <button onclick="searchPhone()" class="btn btn-secondary" type="button" id="button-search">Search</button>
         </div>
     </header>
-    <main>
-
+    <main class="container">
         <!-- no result found -->
         <h3 id="no-result" class="text-center">No result found</h3>
-
         <!-- Phone Details -->
         <div class="card mb-3 mx-auto" style="max-width: 650px;" id="phone-details">
 
         </div>
-
         <!-- search result place -->
         <div id="search-result" class=" container row row-cols-1 row-cols-md-3 g-4">
 
         </div>
     </main>
+    <!-- bootstrap js -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    <!-- custom js -->
     <script src="js/app.js"></script>
 </body>
 

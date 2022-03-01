@@ -1,3 +1,4 @@
+/* search for the phone  */
 const searchPhone = () => {
     let searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -7,44 +8,44 @@ const searchPhone = () => {
         .then(res => res.json())
         .then(data => displaySearchResult(data.data))
 }
-
+/* showing search result */
 const displaySearchResult = phones => {
     const searchResult = document.getElementById('search-result');
     const phoneDetails = document.getElementById('phone-details')
+    /* clearing content for new search */
     phoneDetails.textContent = '';
     searchResult.textContent = '';
-
+    /* handling error and showing result */
     if (phones.length == 0) {
         document.getElementById('no-result').style.display = 'block';
     }
     else {
         document.getElementById('no-result').style.display = 'none';
-        console.log(phones[0])
         for (let i = 0; i < 20; i++) {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-        <div class="card  align-items-center py-3">
+        <div class="card phone align-items-center py-3">
         <img src="${phones[i].image}"  class="">
         <div class="card-body">
         <h5>Brand: ${phones[i].brand}</h5>
             <h5 class="card-title">${phones[i].phone_name}</h5>
         </div>
-        <a href="#"><button  onclick="loadPhoneDetails('${phones[i].slug}')" type="button" class="btn btn-dark" >Learn More</button></a>
+        <a href="#"><button onclick="loadPhoneDetails('${phones[i].slug}')" type="button" class="btn btn-dark" >Learn More</button></a>
         </div>
         `
             searchResult.appendChild(div);
         }
     }
 }
-
+/* getting individual phone details */
 const loadPhoneDetails = phoneId => {
     const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetails(data.data))
 }
-
+/* showing individual phone details */
 const displayPhoneDetails = phone => {
     const phoneDetails = document.getElementById('phone-details')
     phoneDetails.textContent = '';
@@ -72,5 +73,4 @@ const displayPhoneDetails = phone => {
       
       `
     phoneDetails.appendChild(div)
-    console.log(phone)
 }
