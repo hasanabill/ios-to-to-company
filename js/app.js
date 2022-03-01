@@ -17,21 +17,22 @@ const displaySearchResult = phones => {
     }
     else {
         document.getElementById('no-result').style.display = 'none';
-        phones.forEach(phone => {
+        console.log(phones[0])
+        for (let i = 0; i < 20; i++) {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
         <div class="card  align-items-center py-3">
-        <img src="${phone.image}" width="160px" height="212px" class="">
+        <img src="${phones[i].image}"  class="">
         <div class="card-body">
-        <h5>Brand: ${phone.brand}</h5>
-            <h5 class="card-title">${phone.phone_name}</h5>
+        <h5>Brand: ${phones[i].brand}</h5>
+            <h5 class="card-title">${phones[i].phone_name}</h5>
         </div>
-        <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-dark" >Learn More</button>
+        <a href="#"><button  onclick="loadPhoneDetails('${phones[i].slug}')" type="button" class="btn btn-dark" >Learn More</button></a>
         </div>
         `
             searchResult.appendChild(div);
-        })
+        }
     }
 }
 
@@ -46,14 +47,28 @@ const displayPhoneDetails = phone => {
     const phoneDetails = document.getElementById('phone-details')
     phoneDetails.textContent = '';
     const div = document.createElement('div')
-    div.classList.add('modal-dialog')
+    div.classList.add('row', 'align-items-center', 'px-2')
     div.innerHTML = `
-        
-        <div class="">
-            <h5 class="">${phone.name}</h5>
-        </div>
-        
-        `
+    <div class="col-md-4 ">
+    <img src="${phone.image}" class="img-fluid rounded-start" alt="...">
+  </div>
+  <div class="col-md-8">
+    <div class="card-body">
+      <h5 class="card-title">Brand: ${phone.brand}</h5>
+      <h5 class="card-title">Name: ${phone.name}</h5>
+      
+      <p class="card-text"><b>Main Features:</b> <br>
+        <b>Chipset:</b> ${phone.mainFeatures.chipSet} <br>
+        <b>Display Size:</b> ${phone.mainFeatures.displaySize} <br>
+        <b>Storage:</b> ${phone.mainFeatures.memory}<br>
+        </p>
+      <p class="card-text"><b>Sensors:</b> ${phone.mainFeatures.sensors}</p>
+      <p class="card-text"><b>Others:</b> ${Object.entries(phone.others)}</p>
+    <p class="card-text"><small class="text-muted">${phone.releaseDate}</small></p>
+    </div >
+  </div >
+
+    `
     phoneDetails.appendChild(div)
     console.log(phone)
 }
