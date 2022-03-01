@@ -25,8 +25,8 @@ const displaySearchResult = phones => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
-        <div class="card phone align-items-center py-3">
-        <img src="${phones[i].image}"  class="">
+        <div class="card phone border border-2 align-items-center py-3">
+        <img src="${phones[i].image}" alt="">
         <div class="card-body">
         <h5>Brand: ${phones[i].brand}</h5>
             <h5 class="card-title">${phones[i].phone_name}</h5>
@@ -52,7 +52,7 @@ const displayPhoneDetails = phone => {
     const div = document.createElement('div')
     div.classList.add('row', 'align-items-center', 'px-2')
     div.innerHTML = `
-    <div class="col-md-4 ">
+    <div class="col-md-4 w-50 mx-auto">
     <img src="${phone.image}" class="img-fluid rounded-start" alt="...">
   </div>
   <div class="col-md-8">
